@@ -105,7 +105,7 @@ public class Picture extends SimplePicture
 	  for (int row = 0; row < pixels.length; row++)
 	  {
 		  for(int col =0; col < pixels[0].length; col++)
-		  {
+		  { 
 			  Pixel tempPixel = pixels[row][col];
 			  tempPixel.setRed(0);
 		  }
