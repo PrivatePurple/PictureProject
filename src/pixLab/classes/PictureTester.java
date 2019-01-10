@@ -7,8 +7,18 @@ package pixLab.classes;
  * 
  * @author Barbara Ericson 
  */
+import java.awt.Color;
 public class PictureTester
 {
+	public static void testChromakey()
+	{
+		Picture source = new Picture("roller.jpg");
+		Picture background = new Picture("Octo.jpg");
+		source.explore();
+		background.explore();
+		source.chromakey(background, Color.WHITE);
+		source.explore();
+	}
   /** Method to test zeroBlue */
   public static void testZeroBlue()
   {
@@ -17,7 +27,14 @@ public class PictureTester
     beach.zeroBlue();
     beach.explore();
   }
-  
+  /** Method to test mirrorHorizontal */
+  public static void testMirrorHorizontal()
+  {
+	  Picture medic = new Picture("PossibleMed.jpg");
+	  medic.explore();
+	  medic.mirrorHorizontal();
+	  medic.explore();
+  }
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
@@ -52,6 +69,14 @@ public class PictureTester
     swan.explore();
   }
   
+  public static void testMirrorGull()
+  {
+	  Picture gull = new Picture("gull.jpg");
+	  gull.explore();
+	  gull.mirrorGull();
+	  gull.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -59,15 +84,18 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();
-    testMirrorVertical();
+    //testMirrorVertical();
+    //testMirrorHorizontal();
     //testMirrorTemple();
+    //testMirrorGull();
+	  testChromakey();
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();

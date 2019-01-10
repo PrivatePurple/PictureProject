@@ -12,6 +12,22 @@ public class IntArrayWorker
     matrix = theMatrix;
   }
   
+  public int getLargest()
+  {
+	  int largest = Integer.MIN_VALUE;
+	  
+	  for (int col = 0; col < matrix[0].length; col++)
+	  {
+		  for (int row = 0; row < matrix.length; row++)
+		  {
+			  if (matrix[row][col] > largest)
+			  {
+				  largest = matrix[row][col];
+			  }
+		  }
+	  }
+	  return largest;
+  }
   /**
    * Method to return the total 
    * @return the total of the values in the array
@@ -79,7 +95,34 @@ public class IntArrayWorker
     System.out.println();
   }
   
+  public int getColTotal(int col)
+  {
+	  int colTotal = 0;
+	  
+	  for(int row = 0; row < matrix.length; row++)
+	  {
+		  colTotal = matrix[row][col];
+	  }
+	  return colTotal;
+  }
   
+  	public int getCount(int searchFor)
+  	{
+  		int countTotal = 0;
+  		/*
+  		for(int row = 0; row < matrix.length; row++)
+  		{
+  			for(int cols = 0; cols < matrix [0].length; cols++)
+  			{
+  				if(searchFor == matrix[row][cols])
+  				{
+  					counttotal++;
+  				}
+  			}
+  		}
+  		*/
+  		return countTotal;
+  	}
   /** 
    * fill the array with a pattern
    */

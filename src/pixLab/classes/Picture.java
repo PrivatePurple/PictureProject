@@ -132,6 +132,23 @@ public class Picture extends SimplePicture
     } 
   }
   
+  public void mirrorHorizontal()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int height = pixels.length;
+    for (int row = 0; row < height / 2; row++)
+    {
+      for (int col = 0; col < height -1; col++)
+      {
+    	topPixel = pixels[row][col];
+        bottomPixel = pixels[row][height - 1 - col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    } 
+  }
+  
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
   {
@@ -231,7 +248,66 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void mirrorGull()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel leftPixel = null;
+	  Pixel rightPixel = null;
+	  for(int row = 234; row < 322; row++)
+	  {
+		  for(int col = 237; col < 346; col++)
+		  {
+			 leftPixel = pixels[row][col];
+			 rightPixel = pixels[row][345 - col + 345];
+			 rightPixel.setColor(leftPixel.getColor());
+		  }
+	  } 
+  }
+  public Color randomColor()
+  {
+	  Color random;
+	  int red = (int) (Math.random() * 256);
+	  int blue = (int) (Math.random() * 256);
+	  int green = (int) (Math.random() * 256);
+	  
+	  random = new Color(red, green, blue);
+	  
+	  return random;
+  }
   
+  public void randomize(int startRow, int startCol, int endRow, int endCol)
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  
+	  for (int row = startRow; row < endRow; row++)
+	  {
+		  for(int col = startCol; col < endCol; col++)
+		  {
+			  int randomNumber = (int) (Math.random() * 10);
+			  if (randomNumber % 7 == 0)
+			  {
+				  pixels[row][col].setColor(randomColor());
+			  }
+		  }
+	  }
+  }
+  
+  public void chromakey(Picture replacement, Color changeColor)
+  {
+	  Pixel [][] mainPixels = this.getPixels2D();
+	  Pixel [][] replacementPixels = replacement.getPixels2D();
+	  
+	  for (int row = 0; row < mainPixels.length; row++)
+	  {
+		  for (int col = 0; col < mainPixels[0].length; col++)
+		  	{
+			  if (mainPixels[row][col].colorDistance(changeColor) < 10)
+			  {
+				  mainPixels[row][col].setColor(replacementPixels[row][col].getColor());
+			  }
+		  	}
+	  }
+  }
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
