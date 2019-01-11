@@ -35,6 +35,23 @@ public class PictureTester
 	  medic.mirrorHorizontal();
 	  medic.explore();
   }
+  
+  public static void testShiftLeftRight()
+  {
+	  Picture texture = new Picture("Texture.jpg");
+	  texture.explore();
+	  texture.shiftLeftRight(50);
+	  texture.explore();
+  }
+  
+  public static void testShiftUpDown()
+  {
+	  Picture texture = new Picture("Texture.jpg");
+	  texture.explore();
+	  texture.shiftUpDown(50);
+	  texture.explore();
+  }
+  
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
@@ -95,7 +112,8 @@ public class PictureTester
     //testMirrorHorizontal();
     //testMirrorTemple();
     //testMirrorGull();
-	  testChromakey();
+	testShiftLeftRight();
+	testShiftUpDown();
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
